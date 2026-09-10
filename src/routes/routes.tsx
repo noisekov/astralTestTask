@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import Cards from "../pages/cards";
-import Index from "../pages";
+import Index from "../pages/index";
 import Login from "../pages/login";
 import Profile from "../pages/profile";
 import Page from "../components/Page/Page";
@@ -26,5 +26,5 @@ export const router = createBrowserRouter([
         element: <Profile />,
       },
     ],
-    },
+  },
 ]);
