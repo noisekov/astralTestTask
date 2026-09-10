@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import styles from "./Footer.module.css";
 
 interface FooterProps {
   contacts: string[];
@@ -7,14 +7,14 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ contacts }) => {
   return (
-    <footer className="footer">
-      <p className="footer__title">Контакты</p>
-      <ul className="footer__list">
+    <footer className={styles.footer}>
+      <p className={styles.footer__title}>Контакты</p>
+      <ul className={styles.footer__list}>
         {contacts.map((contact) => (
           <li key={contact}>{contact}</li>
         ))}
       </ul>
-      <p className="footer__copy">© 2026 noisekov</p>
+      <p className={styles.footer__copy}>© 2026 noisekov</p>
     </footer>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css";
+import styles from "./Header.module.css";
 import { NavLink } from "react-router";
 
 interface HeaderProps {
@@ -8,19 +8,19 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ name }) => {
   return (
-    <header className="header">
-      <nav className="header__nav">
-        <NavLink className="header__link" to="/" end>
+    <header className={styles.header}>
+      <nav className={styles.header__nav}>
+        <NavLink className={styles.header__link} to="/" end>
           Главная
         </NavLink>
-        <NavLink className="header__link" to="/cards">
+        <NavLink className={styles.header__link} to="/cards">
           Карточки
         </NavLink>
-        <NavLink className="header__link" to="/profile">
+        <NavLink className={styles.header__link} to="/profile">
           Профиль
         </NavLink>
       </nav>
-      <span className="header__user">{name}</span>
+      <span className={styles.header__user}>{name}</span>
     </header>
   );
 };

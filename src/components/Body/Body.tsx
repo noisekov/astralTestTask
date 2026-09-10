@@ -1,12 +1,12 @@
 import { FC } from "react";
-import "./Body.css";
+import styles from "./Body.module.css";
 import { Outlet } from "react-router";
 
 interface BodyProps {}
 
 const Body: FC<BodyProps> = () => {
   return (
-    <div className="body">
+    <div className={styles.body}>
       <Outlet />
     </div>
   );
