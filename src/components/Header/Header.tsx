@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Header.module.css";
 import { NavLink } from "react-router";
 
@@ -6,7 +5,7 @@ interface HeaderProps {
   name: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ name }) => {
+const Header = ({ name }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <nav className={styles.header__nav}>

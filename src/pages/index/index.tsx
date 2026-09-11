@@ -1,11 +1,8 @@
-import { FC } from "react";
 import styles from "./index.module.css";
 
-interface indexProps {}
-
-const Index: FC<indexProps> = ({}) => {
+const Index = () => {
   return (
-    <div>
+    <div className={styles.page}>
       <section className={styles.hero}>
         <h1 className={styles.title}>WordFlow</h1>
         <p className={styles.subtitle}>Учим английские слова легко!</p>

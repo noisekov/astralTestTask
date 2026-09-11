@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import Cards from "../pages/cards";
-import Index from "../pages/index";
-import Login from "../pages/login";
+import Index from "../pages/Index/Index";
+import Login from "../pages/Login/Login";
 import Profile from "../pages/profile";
 import Page from "../components/Page/Page";
 

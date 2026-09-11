@@ -1,8 +1,4 @@
-import { FC } from "react";
-
-interface cardsProps {}
-
-const Сards: FC<cardsProps> = ({}) => {
+const Сards = () => {
   return <div>Сards</div>;
 };
 

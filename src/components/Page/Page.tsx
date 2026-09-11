@@ -1,11 +1,8 @@
-import { FC } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Body from "../Body/Body";
 
-interface PageProps {}
-
-const Page: FC<PageProps> = ({}) => {
+const Page = () => {
   return (
     <>
       <Header name="name" />

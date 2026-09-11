@@ -1,8 +1,4 @@
-import { FC } from "react";
-
-interface profileProps {}
-
-const Profile: FC<profileProps> = ({}) => {
+const Profile = () => {
   return <div>Profile</div>;
 };
 
