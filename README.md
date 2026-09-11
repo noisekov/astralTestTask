@@ -1,5 +1,7 @@
 # Тестовое задание
 
+[Deploy](https://noisekov.github.io/astralTestTask])
+
 ## Общее описание
 
 **Стэк технологий:** React + Redux + TypeScript
