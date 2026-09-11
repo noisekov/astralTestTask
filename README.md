@@ -1,6 +1,6 @@
 # Тестовое задание
 
-[Deploy](https://noisekov.github.io/astralTestTask])
+[Deploy](https://noisekov.github.io/astralTestTask)
 
 ## Общее описание
 
