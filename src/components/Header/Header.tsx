@@ -3,9 +3,10 @@ import { NavLink } from "react-router";
 
 interface HeaderProps {
   name: string;
+  isAuth: boolean;
 }
 
-const Header = ({ name }: HeaderProps) => {
+const Header = ({ name, isAuth }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <nav className={styles.header__nav}>
@@ -15,11 +16,13 @@ const Header = ({ name }: HeaderProps) => {
         <NavLink className={styles.header__link} to="/cards">
           Карточки
         </NavLink>
-        <NavLink className={styles.header__link} to="/profile">
-          Профиль
-        </NavLink>
       </nav>
-      <span className={styles.header__user}>{name}</span>
+      <NavLink
+        className={`${styles.header__link} ${styles.header__user}`}
+        to={isAuth ? "/profile" : "/login"}
+      >
+        {name}
+      </NavLink>
     </header>
   );
 };

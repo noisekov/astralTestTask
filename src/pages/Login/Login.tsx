@@ -3,6 +3,7 @@ import { validateUser } from "../../utils/validateUser";
 import styles from "./Login.module.css";
 import Modal from "../../components/Modal/Modal";
 import { useNavigate } from "react-router";
+import { store } from "../../store/store";
 
 const Login = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,7 +16,8 @@ const Login = () => {
 
     const isValidUser = validateUser(login, password);
 
-    if (isValidUser) {
+    if (isValidUser && login && typeof login === "string") {
+      store.dispatch({ type: "login", payload: login });
       navigate("/");
     } else {
       setIsModalOpen(true);
