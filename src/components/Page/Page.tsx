@@ -11,7 +11,11 @@ const Page = () => {
     <>
       <Header name={login || "Войти"} isAuth={isAuthenticated} />
       <Body />
-      <Footer contacts={["first", "second"]} />
+      <Footer
+        youtube="https://youtube.com/"
+        twitter="https://twitter.com/"
+        instagram="https://instagram.com/"
+      />
     </>
   );
 };

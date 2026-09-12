@@ -13,9 +13,11 @@ const Header = ({ name, isAuth }: HeaderProps) => {
         <NavLink className={styles.header__link} to="/" end>
           Главная
         </NavLink>
-        <NavLink className={styles.header__link} to="/cards">
-          Карточки
-        </NavLink>
+        {isAuth && (
+          <NavLink className={styles.header__link} to="/cards">
+            Карточки
+          </NavLink>
+        )}
       </nav>
       <NavLink
         className={`${styles.header__link} ${styles.header__user}`}
