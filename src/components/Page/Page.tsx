@@ -1,11 +1,10 @@
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Body from "../Body/Body";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../store/storeTypes";
+import { useAppSelector } from "../../hooks/redux";
 
 const Page = () => {
-  const { isAuthenticated, login } = useSelector((state: RootState) => state);
+  const { isAuthenticated, login } = useAppSelector((state) => state);
 
   return (
     <>

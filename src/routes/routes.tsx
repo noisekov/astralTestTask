@@ -4,6 +4,7 @@ import Index from "../pages/Index/Index";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/profile";
 import Page from "../components/Page/Page";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const router = createBrowserRouter(
   [
@@ -14,17 +15,19 @@ export const router = createBrowserRouter(
           path: "/",
           element: <Index />,
         },
+        { path: "/login", element: <Login /> },
         {
-          path: "/cards",
-          element: <Cards />,
-        },
-        {
-          path: "/login",
-          element: <Login />,
-        },
-        {
-          path: "/profile",
-          element: <Profile />,
+          element: <ProtectedRoute />,
+          children: [
+            {
+              path: "/profile",
+              element: <Profile />,
+            },
+            {
+              path: "/cards",
+              element: <Cards />,
+            },
+          ],
         },
       ],
     },
