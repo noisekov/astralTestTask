@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import Profile from "../pages/profile";
 import Page from "../components/Page/Page";
 import ProtectedRoute from "./ProtectedRoute";
+import NotFound from "../pages/NotFound/NotFound";
 
 export const router = createBrowserRouter(
   [
@@ -28,6 +29,10 @@ export const router = createBrowserRouter(
               element: <Cards />,
             },
           ],
+        },
+        {
+          path: "*",
+          element: <NotFound />,
         },
       ],
     },
