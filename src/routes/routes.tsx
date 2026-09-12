@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router";
-import Cards from "../pages/cards";
+import Cards from "../pages/Cards/Cards";
 import Index from "../pages/Index/Index";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/profile";

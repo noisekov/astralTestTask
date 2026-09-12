@@ -4,11 +4,12 @@ import Body from "../Body/Body";
 import { useAppSelector } from "../../hooks/redux";
 
 const Page = () => {
+  const INITIAL_PROFILE_NAME = "Войти";
   const { isAuthenticated, login } = useAppSelector((state) => state);
 
   return (
     <>
-      <Header name={login || "Войти"} isAuth={isAuthenticated} />
+      <Header name={login || INITIAL_PROFILE_NAME} isAuth={isAuthenticated} />
       <Body />
       <Footer
         youtube="https://youtube.com/"

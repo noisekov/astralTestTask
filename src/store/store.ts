@@ -1,9 +1,11 @@
 import { createStore } from "redux";
 import type { AuthState, LoginAction } from "./storeTypes";
 
+const localStorageLogin = localStorage.getItem("login");
+
 const initialState: AuthState = {
-  isAuthenticated: false,
-  login: null,
+  isAuthenticated: Boolean(localStorageLogin),
+  login: localStorageLogin,
 };
 
 function authenticatedReducer(
@@ -12,6 +14,7 @@ function authenticatedReducer(
 ) {
   switch (action.type) {
     case "login":
+      localStorage.setItem("login", action.payload);
       return {
         ...state,
         isAuthenticated: true,
