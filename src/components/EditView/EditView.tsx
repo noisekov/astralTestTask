@@ -115,6 +115,8 @@ const EditView = ({ fields }: EditViewProps) => {
       type: "profile/update",
       payload: profileData,
     });
+    setIsModalOpen(true);
+    setTimeout(() => setIsModalOpen(false), 500);
   };
 
   return (
@@ -132,14 +134,7 @@ const EditView = ({ fields }: EditViewProps) => {
           })}
         </div>
 
-        <Button
-          type="submit"
-          className={styles.form__button}
-          onClick={() => {
-            setIsModalOpen(true);
-            setTimeout(() => setIsModalOpen(false), 500);
-          }}
-        >
+        <Button type="submit" className={styles.form__button}>
           Сохранить
         </Button>
       </form>
