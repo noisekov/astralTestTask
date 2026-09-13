@@ -1,11 +1,7 @@
 import { memo, useState } from "react";
 import styles from "./Card.module.css";
 import { TITLES, type Words } from "../../services/wordsApi";
-
-function getRandomTitle(list: string[]) {
-  const index = Math.floor(Math.random() * list.length);
-  return list[index];
-}
+import { getRandomTitle } from "../../utils/getRandomTitle";
 
 const Card = memo(({ cardsData }: { cardsData: Words }) => {
   const [title] = useState(() => getRandomTitle(TITLES));

@@ -1,0 +1,57 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.field__input,
+.field__textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.field__input:focus,
+.field__textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.field__input:disabled,
+.field__textarea:disabled {
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.field__textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.field__group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.field__option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.field__checkbox {
+  margin: 0;
+}

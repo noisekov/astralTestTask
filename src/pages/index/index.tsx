@@ -14,7 +14,8 @@ const Index = () => {
       </section>
 
       <section className={styles.features}>
-        <h2>Возможности приложения</h2>
+        <h2 className={styles.features__title}>Возможности приложения</h2>
+
         <ul className={styles.features__list}>
           {[
             "Интерактивные карточки со словами",
