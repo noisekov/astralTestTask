@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router";
-import Cards from "../pages/Cards/Cards";
 import Index from "../pages/Index/Index";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/profile";
 import Page from "../components/Page/Page";
 import ProtectedRoute from "./ProtectedRoute";
 import NotFound from "../pages/NotFound/NotFound";
+import { Cards } from "../pages/Cards/Cards";
 
 export const router = createBrowserRouter(
   [
