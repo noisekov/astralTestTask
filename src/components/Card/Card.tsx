@@ -2,6 +2,7 @@ import { memo, useState } from "react";
 import styles from "./Card.module.css";
 import { TITLES, type Words } from "../../services/wordsApi";
 import { getRandomTitle } from "../../utils/getRandomTitle";
+import Button from "../Button/Button";
 
 const Card = memo(({ cardsData }: { cardsData: Words }) => {
   const [title] = useState(() => getRandomTitle(TITLES));
@@ -20,26 +21,26 @@ const Card = memo(({ cardsData }: { cardsData: Words }) => {
 
             <p className={styles.card__example}>« {cardsData.example} »</p>
 
-            <button
+            <Button
               className={styles.card__button}
               type="button"
               onClick={() => setIsFlipped(true)}
             >
               Learn More
-            </button>
+            </Button>
           </div>
         </div>
 
         <div className={`${styles.card__face} ${styles.card__back}`}>
           <div className={styles.card__body}>
             <h2 className={styles.card__word}>{cardsData.translation}</h2>
-            <button
+            <Button
               className={styles.card__button}
               type="button"
               onClick={() => setIsFlipped(false)}
             >
               Show Less
-            </button>
+            </Button>
           </div>
         </div>
       </article>

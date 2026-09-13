@@ -4,6 +4,7 @@ import styles from "./Login.module.css";
 import Modal from "../../components/Modal/Modal";
 import { useNavigate } from "react-router";
 import { store } from "../../store/store";
+import Button from "../../components/Button/Button";
 
 const Login = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,9 +40,7 @@ const Login = () => {
           name="password"
           placeholder="Введите ваш пароль"
         />
-        <button className={styles.button} type="submit">
-          Войти
-        </button>
+        <Button type="submit">Войти</Button>
       </form>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

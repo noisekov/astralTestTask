@@ -12,25 +12,6 @@
 
 .form__button {
   align-self: flex-start;
-  padding: 12px 20px;
-  border: 0;
-  border-radius: 8px;
-  background: #6366f1;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    background 0.2s,
-    transform 0.1s;
-}
-
-.form__button:hover {
-  background: #4f46e5;
-}
-
-.form__button:active {
-  transform: translateY(1px);
 }
 
 @media (max-width: 768px) {

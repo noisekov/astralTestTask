@@ -5,6 +5,7 @@ import type {
   FieldValue,
   ProfileField,
 } from "../../pages/Profile/typesProfile";
+import Button from "../Button/Button";
 
 interface EditViewProps {
   fields: ProfileField[];
@@ -98,9 +99,9 @@ const EditView = ({ fields }: EditViewProps) => {
         })}
       </div>
 
-      <button type="submit" className={styles.form__button}>
+      <Button type="submit" className={styles.form__button}>
         Сохранить
-      </button>
+      </Button>
     </form>
   );
 };
