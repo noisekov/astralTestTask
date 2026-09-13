@@ -7,7 +7,7 @@ function getRandomTitle(list: string[]) {
   return list[index];
 }
 
-export const Card = memo(({ cardsData }: { cardsData: Words }) => {
+const Card = memo(({ cardsData }: { cardsData: Words }) => {
   const [title] = useState(() => getRandomTitle(TITLES));
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -50,3 +50,5 @@ export const Card = memo(({ cardsData }: { cardsData: Words }) => {
     </div>
   );
 });
+
+export default Card;

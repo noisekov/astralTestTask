@@ -1,5 +1,5 @@
 import type { Words } from "../../services/wordsApi";
-import { Card } from "../Card/Card";
+import Card from "../Card/Card";
 import styles from "./CardList.module.css";
 
 const CardList = ({ cardsData }: { cardsData: Words[] }) => {
