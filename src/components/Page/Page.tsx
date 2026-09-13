@@ -5,8 +5,8 @@ import { useAppSelector } from "../../hooks/redux";
 
 const Page = () => {
   const INITIAL_PROFILE_NAME = "Войти";
-  const isAuthenticated = useAppSelector((state) => state.isAuthenticated);
-  const login = useAppSelector((state) => state.login);
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+  const login = useAppSelector((state) => state.auth.login);
 
   return (
     <>

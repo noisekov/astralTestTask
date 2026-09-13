@@ -6,6 +6,7 @@ import type {
   FieldValue,
   ProfileField,
 } from "../../pages/Profile/typesProfile";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 
 interface EditViewProps {
   fields: ProfileField[];
@@ -14,6 +15,7 @@ interface EditViewProps {
 const applyDependencies = (fields: ProfileField[]): ProfileField[] => {
   const values = fields.reduce<Record<string, FieldValue>>((acc, field) => {
     acc[field.name] = field.value;
+
     return acc;
   }, {});
 
@@ -58,9 +60,25 @@ const applyDependencies = (fields: ProfileField[]): ProfileField[] => {
 };
 
 const EditView = ({ fields }: EditViewProps) => {
-  const [formFields, setFormFields] = useState<ProfileField[]>(() =>
-    applyDependencies(fields),
-  );
+  const dispatch = useAppDispatch();
+  const savedProfile = useAppSelector((state) => state.profile.data);
+
+  const [formFields, setFormFields] = useState<ProfileField[]>(() => {
+    const fieldsWithSavedValues = fields.map((field) => {
+      const savedValue = savedProfile[field.name];
+
+      if (savedValue === undefined) {
+        return field;
+      }
+
+      return {
+        ...field,
+        value: savedValue,
+      };
+    });
+
+    return applyDependencies(fieldsWithSavedValues);
+  });
 
   const updateField = useCallback((name: string, value: FieldValue) => {
     setFormFields((currentFields) => {
@@ -85,12 +103,16 @@ const EditView = ({ fields }: EditViewProps) => {
     const profileData = formFields.reduce<Record<string, FieldValue>>(
       (acc, field) => {
         acc[field.name] = field.value;
+
         return acc;
       },
       {},
     );
 
-    console.log("Profile data:", profileData);
+    dispatch({
+      type: "profile/update",
+      payload: profileData,
+    });
   };
 
   return (

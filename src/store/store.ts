@@ -1,28 +1,20 @@
-import { createStore } from "redux";
-import type { AuthState, LoginAction } from "./storeTypes";
+import { combineReducers, createStore } from "redux";
 
-const localStorageLogin = localStorage.getItem("login");
+import authReducer from "./authReducer";
+import profileReducer from "./profileReducer";
 
-const initialState: AuthState = {
-  isAuthenticated: Boolean(localStorageLogin),
-  login: localStorageLogin,
-};
+const rootReducer = combineReducers({
+  auth: authReducer,
+  profile: profileReducer,
+});
 
-function authenticatedReducer(
-  state: AuthState = initialState,
-  action: LoginAction,
-) {
-  switch (action.type) {
-    case "login":
-      localStorage.setItem("login", action.payload);
-      return {
-        ...state,
-        isAuthenticated: true,
-        login: action.payload,
-      };
-    default:
-      return state;
-  }
-}
+export const store = createStore(rootReducer);
 
-export const store = createStore(authenticatedReducer);
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppDispatch = typeof store.dispatch;
+
+store.subscribe(() => {
+  const state = store.getState();
+
+  localStorage.setItem("profile", JSON.stringify(state.profile.data));
+});
