@@ -1,10 +1,10 @@
-import { memo, useState } from "react";
+import { useState } from "react";
 import styles from "./Card.module.css";
 import { TITLES, type Words } from "../../services/wordsApi";
 import { getRandomTitle } from "../../utils/getRandomTitle";
 import Button from "../Button/Button";
 
-const Card = memo(({ cardsData }: { cardsData: Words }) => {
+const Card = ({ cardsData }: { cardsData: Words }) => {
   const [title] = useState(() => getRandomTitle(TITLES));
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -46,6 +46,6 @@ const Card = memo(({ cardsData }: { cardsData: Words }) => {
       </article>
     </div>
   );
-});
+};
 
 export default Card;

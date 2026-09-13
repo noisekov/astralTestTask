@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Field from "../Field/Field";
+import Button from "../Button/Button";
 import styles from "./EditView.module.css";
 import type {
   FieldValue,
   ProfileField,
 } from "../../pages/Profile/typesProfile";
-import Button from "../Button/Button";
 
 interface EditViewProps {
   fields: ProfileField[];
@@ -14,7 +14,6 @@ interface EditViewProps {
 const applyDependencies = (fields: ProfileField[]): ProfileField[] => {
   const values = fields.reduce<Record<string, FieldValue>>((acc, field) => {
     acc[field.name] = field.value;
-
     return acc;
   }, {});
 
@@ -28,22 +27,32 @@ const applyDependencies = (fields: ProfileField[]): ProfileField[] => {
     const dependencyMatches =
       String(dependencyValue) === field.dependency.value;
 
-    if (!dependencyMatches) {
-      return {
-        ...field,
-        hidden: false,
-        disabled: false,
-      };
+    const hidden = dependencyMatches
+      ? (field.dependency.hidden ?? false)
+      : false;
+
+    const disabled = dependencyMatches
+      ? (field.dependency.disabled ?? false)
+      : false;
+
+    const value =
+      dependencyMatches && field.dependency.setValue !== undefined
+        ? field.dependency.setValue
+        : field.value;
+
+    if (
+      field.hidden === hidden &&
+      field.disabled === disabled &&
+      field.value === value
+    ) {
+      return field;
     }
 
     return {
       ...field,
-      hidden: field.dependency.hidden ?? false,
-      disabled: field.dependency.disabled ?? false,
-      value:
-        field.dependency.setValue !== undefined
-          ? field.dependency.setValue
-          : field.value,
+      hidden,
+      disabled,
+      value,
     };
   });
 };
@@ -53,7 +62,7 @@ const EditView = ({ fields }: EditViewProps) => {
     applyDependencies(fields),
   );
 
-  const updateField = (name: string, value: FieldValue) => {
+  const updateField = useCallback((name: string, value: FieldValue) => {
     setFormFields((currentFields) => {
       const nextFields = currentFields.map((field) => {
         if (field.name !== name) {
@@ -68,7 +77,7 @@ const EditView = ({ fields }: EditViewProps) => {
 
       return applyDependencies(nextFields);
     });
-  };
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -76,7 +85,6 @@ const EditView = ({ fields }: EditViewProps) => {
     const profileData = formFields.reduce<Record<string, FieldValue>>(
       (acc, field) => {
         acc[field.name] = field.value;
-
         return acc;
       },
       {},

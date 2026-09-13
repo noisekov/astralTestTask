@@ -3,6 +3,7 @@ import type {
   FieldValue,
   ProfileField,
 } from "../../pages/Profile/typesProfile";
+import { memo } from "react";
 
 interface FieldProps {
   field: ProfileField;
@@ -206,4 +207,4 @@ const Field = ({ field, onChange }: FieldProps) => {
   }
 };
 
-export default Field;
+export default memo(Field);
