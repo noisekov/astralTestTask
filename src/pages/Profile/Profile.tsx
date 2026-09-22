@@ -2,7 +2,7 @@ import EditView from "../../components/EditView/EditView";
 import { profileFields } from "../../services/fields";
 import styles from "./Profile.module.css";
 import Button from "../../components/Button/Button";
-import { useAppDispatch } from "../../hooks/redux";
+import { useAppDispatch } from "../../store/hooks";
 
 const Profile = () => {
   const dispatch = useAppDispatch();

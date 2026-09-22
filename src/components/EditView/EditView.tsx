@@ -6,8 +6,9 @@ import type {
   FieldValue,
   ProfileField,
 } from "../../pages/Profile/typesProfile";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Modal from "../Modal/Modal";
+import { selectProfile } from "../../store/selectors";
 
 interface EditViewProps {
   fields: ProfileField[];
@@ -63,7 +64,7 @@ const applyDependencies = (fields: ProfileField[]): ProfileField[] => {
 const EditView = ({ fields }: EditViewProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const savedProfile = useAppSelector((state) => state.profile.data);
+  const savedProfile = useAppSelector(selectProfile);
 
   const [formFields, setFormFields] = useState<ProfileField[]>(() => {
     const fieldsWithSavedValues = fields.map((field) => {

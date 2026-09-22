@@ -1,12 +1,13 @@
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Body from "../Body/Body";
-import { useAppSelector } from "../../hooks/redux";
+import { useAppSelector } from "../../store/hooks";
+import { selectIsAuthenticated, selectLogin } from "../../store/selectors";
 
 const Page = () => {
   const INITIAL_PROFILE_NAME = "Войти";
-  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
-  const login = useAppSelector((state) => state.auth.login);
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+  const login = useAppSelector(selectLogin);
 
   return (
     <>
