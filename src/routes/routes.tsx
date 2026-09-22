@@ -1,12 +1,7 @@
 import { createBrowserRouter } from "react-router";
-import Login from "../pages/Login/Login";
 import Page from "../components/Page/Page";
 import ProtectedRoute from "./ProtectedRoute";
-import NotFound from "../pages/NotFound/NotFound";
-import Cards from "../pages/Cards/Cards";
 import GuestRoute from "./GuestRoute";
-import Index from "../pages/Index";
-import Profile from "../pages/Profile/Profile";
 
 export const router = createBrowserRouter(
   [
@@ -15,28 +10,65 @@ export const router = createBrowserRouter(
       children: [
         {
           path: "/",
-          element: <Index />,
+          lazy: async () => {
+            const { default: Index } = await import("../pages/Index");
+
+            return {
+              Component: Index,
+            };
+          },
         },
         {
           element: <GuestRoute />,
-          children: [{ path: "/login", element: <Login /> }],
+          children: [
+            {
+              path: "/login",
+              lazy: async () => {
+                const { default: Login } = await import("../pages/Login/Login");
+
+                return {
+                  Component: Login,
+                };
+              },
+            },
+          ],
         },
         {
           element: <ProtectedRoute />,
           children: [
             {
               path: "/profile",
-              element: <Profile />,
+              lazy: async () => {
+                const { default: Profile } =
+                  await import("../pages/Profile/Profile");
+
+                return {
+                  Component: Profile,
+                };
+              },
             },
             {
               path: "/cards",
-              element: <Cards />,
+              lazy: async () => {
+                const { default: Cards } = await import("../pages/Cards/Cards");
+
+                return {
+                  Component: Cards,
+                };
+              },
             },
           ],
         },
         {
           path: "*",
-          element: <NotFound />,
+          lazy: async () => {
+            const { default: NotFound } =
+              await import("../pages/NotFound/NotFound");
+
+            return {
+              Component: NotFound,
+            };
+          },
         },
       ],
     },
