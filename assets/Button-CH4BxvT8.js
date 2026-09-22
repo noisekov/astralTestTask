@@ -1,0 +1,1 @@
+import{a as e}from"./index-6iq3vxDg.js";var t={button:`_button_yx4qw_1`},n=e(),r=({children:e,className:r=``,...i})=>(0,n.jsx)(`button`,{className:`${t.button} ${r}`,...i,children:e});export{r as t};
